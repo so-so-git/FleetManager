@@ -1,0 +1,256 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:cmn="clr-namespace:SO.FleetManager.Commons"
+    x:Class="SO.FleetManager.MainWindow"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    Language="ja-jp"
+    Title="FleetManager" Height="550" Width="1350">
+
+    <Grid>
+        <StackPanel Margin="0,0,0,444" Orientation="Horizontal">
+            <GroupBox Header="表示対象" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <RadioButton
+                        x:Name="rdoViewPossessions" Content="保有している艦のみ"
+                        HorizontalAlignment="Left" Margin="10,5,5,5" VerticalAlignment="Top" IsChecked="True" Checked="rdoViewPossessions_Checked" />
+                    <RadioButton
+                        x:Name="rdoViewotPossessions" Content="保有していない艦のみ"
+                        HorizontalAlignment="Left" Margin="5" VerticalAlignment="Top" Checked="rdoViewotPossessions_Checked" />
+                    <RadioButton
+                        x:Name="rdoViewAll" Content="全て"
+                        HorizontalAlignment="Left" Margin="5,5,10,5" VerticalAlignment="Top" Checked="rdoViewAll_Checked" />
+                </StackPanel>
+            </GroupBox>
+
+            <CheckBox
+                Name="chkColoring" Content="レベルで色分けする"
+                IsChecked="{Binding IsColoringByLevel}"
+                VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" />
+        </StackPanel>
+
+        <DataGrid
+            Name="grdShipData" ItemsSource="{Binding ShipDataGridItemsSource}"
+            Height="429" VerticalAlignment="Bottom" Margin="10,0,10,10">
+
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Value="{x:Static cmn:LevelRange.None}">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource LevelRangeConverter}">
+                                    <Binding ElementName="chkColoring" Path="IsChecked" />
+                                    <Binding Path="Level" />
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter Property="Background" Value="White" />
+                        </DataTrigger>
+                        <DataTrigger Value="{x:Static cmn:LevelRange.NotPossession}">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource LevelRangeConverter}">
+                                    <Binding ElementName="chkColoring" Path="IsChecked" />
+                                    <Binding Path="Level" />
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter Property="Background" Value="LightGray" />
+                        </DataTrigger>
+                        <DataTrigger Value="{x:Static cmn:LevelRange.Rookie}">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource LevelRangeConverter}">
+                                    <Binding ElementName="chkColoring" Path="IsChecked" />
+                                    <Binding Path="Level" />
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter Property="Background" Value="HotPink" />
+                        </DataTrigger>
+                        <DataTrigger Value="{x:Static cmn:LevelRange.Low}">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource LevelRangeConverter}">
+                                    <Binding ElementName="chkColoring" Path="IsChecked" />
+                                    <Binding Path="Level" />
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter Property="Background" Value="DarkSalmon" />
+                        </DataTrigger>
+                        <DataTrigger Value="{x:Static cmn:LevelRange.Middle}">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource LevelRangeConverter}">
+                                    <Binding ElementName="chkColoring" Path="IsChecked" />
+                                    <Binding Path="Level" />
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter Property="Background" Value="Khaki" />
+                        </DataTrigger>
+                        <DataTrigger Value="{x:Static cmn:LevelRange.High}">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource LevelRangeConverter}">
+                                    <Binding ElementName="chkColoring" Path="IsChecked" />
+                                    <Binding Path="Level" />
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter Property="Background" Value="GreenYellow" />
+                        </DataTrigger>
+                        <DataTrigger Value="{x:Static cmn:LevelRange.Expert}">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource LevelRangeConverter}">
+                                    <Binding ElementName="chkColoring" Path="IsChecked" />
+                                    <Binding Path="Level" />
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter Property="Background" Value="MediumAquamarine" />
+                        </DataTrigger>
+                        <DataTrigger Value="{x:Static cmn:LevelRange.Elite}">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource LevelRangeConverter}">
+                                    <Binding ElementName="chkColoring" Path="IsChecked" />
+                                    <Binding Path="Level" />
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter Property="Background" Value="LightSkyBlue" />
+                        </DataTrigger>
+                        <DataTrigger Value="{x:Static cmn:LevelRange.Flagship}">
+                            <DataTrigger.Binding>
+                                <MultiBinding Converter="{StaticResource LevelRangeConverter}">
+                                    <Binding ElementName="chkColoring" Path="IsChecked" />
+                                    <Binding Path="Level" />
+                                </MultiBinding>
+                            </DataTrigger.Binding>
+                            <Setter Property="Background" Value="RoyalBlue" />
+                            <Setter Property="Foreground" Value="White" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.ItemContainerStyle>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="保有"
+                    Binding="{Binding ShipId, Converter={StaticResource PossessionConverter}}" />
+
+                <DataGridTextColumn
+                    Header="艦船名"
+                    Binding="{Binding ShipName}" />
+
+                <DataGridTextColumn
+                    Header="LV"
+                    Binding="{Binding Level}" />
+
+                <DataGridTextColumn
+                    Header="耐久"
+                    Binding="{Binding HitPoint}" />
+
+                <DataGridTextColumn Header="火力">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding Converter="{StaticResource CurrentMaxStatusConverter}">
+                            <Binding Path="FirePower" />
+                            <Binding Path="MaxFirePower" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="雷装">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding Converter="{StaticResource CurrentMaxStatusConverter}">
+                            <Binding Path="TorpedoPower" />
+                            <Binding Path="MaxTorpedoPower" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="対空">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding Converter="{StaticResource CurrentMaxStatusConverter}">
+                            <Binding Path="AntiAircraft" />
+                            <Binding Path="MaxAntiAircraft" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="装甲">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding Converter="{StaticResource CurrentMaxStatusConverter}">
+                            <Binding Path="Armor" />
+                            <Binding Path="MaxArmor" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="運">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding Converter="{StaticResource CurrentMaxStatusConverter}">
+                            <Binding Path="Luck" />
+                            <Binding Path="MaxLuck" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="対潜">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding Converter="{StaticResource CurrentMaxStatusConverter}">
+                            <Binding Path="AntiSubmarine" />
+                            <Binding Path="MaxAntiSubmarine" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="回避">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding Converter="{StaticResource CurrentMaxStatusConverter}">
+                            <Binding Path="Avoidance" />
+                            <Binding Path="MaxAvoidance" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="索敵">
+                    <DataGridTextColumn.Binding>
+                        <MultiBinding Converter="{StaticResource CurrentMaxStatusConverter}">
+                            <Binding Path="Scouting" />
+                            <Binding Path="MaxScouting" />
+                        </MultiBinding>
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+
+                <DataGridTextColumn
+                    Header="速力"
+                    Binding="{Binding IsHighspeed, Converter={StaticResource SpeedConverter}}" />
+
+                <DataGridTextColumn
+                    Header="消費燃料"
+                    Binding="{Binding FuelConsumption}" />
+
+                <DataGridTextColumn
+                    Header="消費弾薬"
+                    Binding="{Binding AmmoConsumption}" />
+
+                <DataGridTextColumn
+                    Header="スロット数"
+                    Binding="{Binding SlotAvailable}" />
+
+                <DataGridTextColumn
+                    Header="スロット1搭載数"
+                    Binding="{Binding Slot1Mounts, Converter={StaticResource UnavailableStatusConverter}}" />
+
+                <DataGridTextColumn
+                    Header="スロット2搭載数"
+                    Binding="{Binding Slot2Mounts, Converter={StaticResource UnavailableStatusConverter}}" />
+
+                <DataGridTextColumn
+                    Header="スロット3搭載数"
+                    Binding="{Binding Slot3Mounts, Converter={StaticResource UnavailableStatusConverter}}" />
+
+                <DataGridTextColumn
+                    Header="スロット4搭載数"
+                    Binding="{Binding Slot4Mounts, Converter={StaticResource UnavailableStatusConverter}}" />
+
+                <DataGridTextColumn
+                    Header="高射砲内蔵"
+                    Binding="{Binding IsBuiltInAntiAircraft, Converter={StaticResource TrueToCircleConverter}}" />
+
+                <DataGridTextColumn
+                    Header="更新日時"
+                    Binding="{Binding UpdatedDateTime}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="3d2b8cbc-46fd-4799-9470-76bb27246059" ChangeDateTime="10/24/2015 18:34:04">
+    <Property Name="ElementName" Value="[dbo].[MstCode].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstCode]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CodeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7e1785da-6faf-45b4-bfd6-dea8c145fb7a" ChangeDateTime="10/24/2015 18:34:21">
+    <Property Name="ElementName" Value="[dbo].[MstCode].[CodeId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstCode]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CodeType" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6db590b8-25ad-4b31-9e6d-722c9805ef9f" ChangeDateTime="10/24/2015 18:37:00">
+    <Property Name="ElementName" Value="[dbo].[MstCode].[CodeType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstCode]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Kind" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aef48ca8-0ddf-4d2f-9938-460d58df5b8e" ChangeDateTime="10/24/2015 18:37:24">
+    <Property Name="ElementName" Value="[dbo].[MstCode].[Kind]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstCode]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Classification" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="92b41811-7cf7-40c1-9dca-9d88e45d53f1" ChangeDateTime="10/25/2015 11:21:58">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[ShipSpecId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SpecId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="957aa172-e080-44b7-a340-b8ec56b8785e" ChangeDateTime="10/25/2015 11:22:19">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[ShipName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SpecName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f5530ff0-e76c-43e6-86f2-130afc84b4eb" ChangeDateTime="10/25/2015 11:23:08">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[ShipType]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ShipTypeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="236285a2-39c6-4e71-a05e-f9a55e128441" ChangeDateTime="10/25/2015 11:29:11">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[SlotNumber]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SlotAvailable" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ffa4b10a-d85e-4ade-9370-124129378ffe" ChangeDateTime="10/25/2015 11:29:23">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[Slot2Mount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ｓ" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="34918285-d332-4161-871f-0c68f1587a51" ChangeDateTime="10/25/2015 11:29:31">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[Slot1Mount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Slot1Mounts" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="68fd1471-b801-42b8-bc6e-bfb035559a1c" ChangeDateTime="10/25/2015 11:29:36">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[ｓ]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Slot2Mounts" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="daa99b40-5daf-4ac4-ab37-493fb7087b0f" ChangeDateTime="10/25/2015 11:29:38">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[Slot3Mount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Slot3Mounts" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e85ae68b-d62b-4d70-8543-c3c1d1d7f389" ChangeDateTime="10/25/2015 11:29:40">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[Slot4Mount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Slot4Mounts" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e941d9c0-da00-4196-b272-66cc53615060" ChangeDateTime="10/25/2015 11:34:08">
+    <Property Name="ElementName" Value="[dbo].[TblShipData].[Firepower]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TblShipData]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FirePower" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="960091fb-f8fb-4b51-b508-26aede446cd8" ChangeDateTime="10/25/2015 11:34:16">
+    <Property Name="ElementName" Value="[dbo].[TblShipData].[Torpedopower]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TblShipData]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TorpedoPower" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="339d322b-682d-4e73-9fc4-6aa5cd008ef3" ChangeDateTime="10/25/2015 11:34:28">
+    <Property Name="ElementName" Value="[dbo].[TblShipData].[ShipSpecId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TblShipData]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SpecId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f9351eb7-1e1a-4922-995c-6e0743e626ca" ChangeDateTime="10/25/2015 12:54:03">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[SpecName]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ShipName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="2badac45-9590-4edd-bb2f-fe4743103bc5" ChangeDateTime="10/25/2015 12:54:34">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[RemodelingId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RemodelingGradeCode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5348948f-c6c3-4792-8896-9119dff2e0b6" ChangeDateTime="10/25/2015 12:54:50">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[RemodelingGradeCode]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NextGradeCode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="05470413-8d45-4da6-8ec6-8952d287fd23" ChangeDateTime="10/25/2015 12:56:03">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[GradeCode]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GradeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="6579bad5-b447-443b-8a89-78ad9cbe3bfa" ChangeDateTime="10/25/2015 12:57:01">
+    <Property Name="ElementName" Value="[dbo].[MstGrade].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstGrade]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GradeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1984d5a6-117a-4a1a-a1bf-c190109d9545" ChangeDateTime="10/25/2015 13:03:21">
+    <Property Name="ElementName" Value="[dbo].[TblShipData].[SpecId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TblShipData]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ShipBaseCode" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="33bad7a4-eec1-4184-b5d7-8737086935e1" ChangeDateTime="10/25/2015 14:00:57">
+    <Property Name="ElementName" Value="[dbo].[MstShipBase].[NextGradeCode]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[MstShipBase]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="NextGradeId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f8803c5d-c458-4783-b7b0-f3b5227a1f37" ChangeDateTime="10/25/2015 14:08:30">
+    <Property Name="ElementName" Value="[dbo].[TblShipData].[GradeId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TblShipData]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Grade" />
+  </Operation>
+</Operations>

@@ -1,0 +1,853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FleetManagerDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MstShipBase">
+          <Key>
+            <PropertyRef Name="ShipBaseCode" />
+            <PropertyRef Name="Grade" />
+          </Key>
+          <Property Name="ShipBaseCode" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="Grade" Type="tinyint" Nullable="false" />
+          <Property Name="ShipName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShipTypeId" Type="int" Nullable="false" />
+          <Property Name="RemodelingLevel" Type="tinyint" />
+          <Property Name="NextGrade" Type="tinyint" />
+          <Property Name="HitPoint" Type="tinyint" Nullable="false" />
+          <Property Name="MaxFirePower" Type="smallint" Nullable="false" />
+          <Property Name="MaxTorpedoPower" Type="smallint" Nullable="false" />
+          <Property Name="MaxAntiAircraft" Type="smallint" Nullable="false" />
+          <Property Name="MaxArmor" Type="smallint" Nullable="false" />
+          <Property Name="MaxLuck" Type="smallint" Nullable="false" />
+          <Property Name="MaxAntiSubmarine" Type="smallint" Nullable="false" />
+          <Property Name="MaxAvoidance" Type="smallint" Nullable="false" />
+          <Property Name="MaxScouting" Type="smallint" Nullable="false" />
+          <Property Name="IsHighspeed" Type="bit" Nullable="false" />
+          <Property Name="AttackRange" Type="tinyint" Nullable="false" />
+          <Property Name="FuelConsumption" Type="smallint" Nullable="false" />
+          <Property Name="AmmoConsumption" Type="smallint" Nullable="false" />
+          <Property Name="SlotAvailable" Type="tinyint" Nullable="false" />
+          <Property Name="Slot1Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot2Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot3Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot4Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="IsBuiltInAntiAircraft" Type="bit" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MstShipType">
+          <Key>
+            <PropertyRef Name="ShipTypeId" />
+          </Key>
+          <Property Name="ShipTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShipTypeName" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TblShipData">
+          <Key>
+            <PropertyRef Name="ShipId" />
+          </Key>
+          <Property Name="ShipId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShipBaseCode" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="Grade" Type="tinyint" Nullable="false" />
+          <Property Name="Level" Type="tinyint" Nullable="false" />
+          <Property Name="FirePower" Type="smallint" Nullable="false" />
+          <Property Name="TorpedoPower" Type="smallint" Nullable="false" />
+          <Property Name="AntiAircraft" Type="smallint" Nullable="false" />
+          <Property Name="Armor" Type="smallint" Nullable="false" />
+          <Property Name="Luck" Type="smallint" Nullable="false" />
+          <Property Name="AntiSubmarine" Type="smallint" Nullable="false" />
+          <Property Name="Avoidance" Type="smallint" Nullable="false" />
+          <Property Name="Scouting" Type="smallint" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <!--生成中に見つかったエラー:
+警告 6002: テーブル/ビュー 'FleetManagerData.dbo.ViewAllShips' には主キーが定義されていません。主キーは推論され、定義は読み取り専用のテーブル/ビューとして作成されました。-->
+        <EntityType Name="ViewAllShips">
+          <Key>
+            <PropertyRef Name="ShipBaseCode" />
+            <PropertyRef Name="Grade" />
+            <PropertyRef Name="ShipName" />
+            <PropertyRef Name="HitPoint" />
+            <PropertyRef Name="MaxFirePower" />
+            <PropertyRef Name="MaxTorpedoPower" />
+            <PropertyRef Name="MaxAntiAircraft" />
+            <PropertyRef Name="MaxArmor" />
+            <PropertyRef Name="MaxLuck" />
+            <PropertyRef Name="MaxAntiSubmarine" />
+            <PropertyRef Name="MaxAvoidance" />
+            <PropertyRef Name="MaxScouting" />
+            <PropertyRef Name="IsHighspeed" />
+            <PropertyRef Name="FuelConsumption" />
+            <PropertyRef Name="AmmoConsumption" />
+            <PropertyRef Name="SlotAvailable" />
+            <PropertyRef Name="Slot1Mounts" />
+            <PropertyRef Name="Slot2Mounts" />
+            <PropertyRef Name="Slot3Mounts" />
+            <PropertyRef Name="Slot4Mounts" />
+            <PropertyRef Name="IsBuiltInAntiAircraft" />
+          </Key>
+          <Property Name="ShipBaseCode" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="Grade" Type="tinyint" Nullable="false" />
+          <Property Name="ShipName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShipId" Type="int" />
+          <Property Name="Level" Type="tinyint" />
+          <Property Name="RemodelingLevel" Type="tinyint" />
+          <Property Name="NextGrade" Type="tinyint" />
+          <Property Name="HitPoint" Type="tinyint" Nullable="false" />
+          <Property Name="FirePower" Type="smallint" />
+          <Property Name="MaxFirePower" Type="smallint" Nullable="false" />
+          <Property Name="TorpedoPower" Type="smallint" />
+          <Property Name="MaxTorpedoPower" Type="smallint" Nullable="false" />
+          <Property Name="AntiAircraft" Type="smallint" />
+          <Property Name="MaxAntiAircraft" Type="smallint" Nullable="false" />
+          <Property Name="Armor" Type="smallint" />
+          <Property Name="MaxArmor" Type="smallint" Nullable="false" />
+          <Property Name="Luck" Type="smallint" />
+          <Property Name="MaxLuck" Type="smallint" Nullable="false" />
+          <Property Name="AntiSubmarine" Type="smallint" />
+          <Property Name="MaxAntiSubmarine" Type="smallint" Nullable="false" />
+          <Property Name="Avoidance" Type="smallint" />
+          <Property Name="MaxAvoidance" Type="smallint" Nullable="false" />
+          <Property Name="Scouting" Type="smallint" />
+          <Property Name="MaxScouting" Type="smallint" Nullable="false" />
+          <Property Name="IsHighspeed" Type="bit" Nullable="false" />
+          <Property Name="FuelConsumption" Type="smallint" Nullable="false" />
+          <Property Name="AmmoConsumption" Type="smallint" Nullable="false" />
+          <Property Name="SlotAvailable" Type="tinyint" Nullable="false" />
+          <Property Name="Slot1Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot2Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot3Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot4Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="IsBuiltInAntiAircraft" Type="bit" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <!--生成中に見つかったエラー:
+警告 6002: テーブル/ビュー 'FleetManagerData.dbo.ViewNotPossessionShips' には主キーが定義されていません。主キーは推論され、定義は読み取り専用のテーブル/ビューとして作成されました。-->
+        <EntityType Name="ViewNotPossessionShips">
+          <Key>
+            <PropertyRef Name="ShipBaseCode" />
+            <PropertyRef Name="Grade" />
+            <PropertyRef Name="ShipName" />
+            <PropertyRef Name="HitPoint" />
+            <PropertyRef Name="MaxFirePower" />
+            <PropertyRef Name="MaxTorpedoPower" />
+            <PropertyRef Name="MaxAntiAircraft" />
+            <PropertyRef Name="MaxArmor" />
+            <PropertyRef Name="MaxLuck" />
+            <PropertyRef Name="MaxAntiSubmarine" />
+            <PropertyRef Name="MaxAvoidance" />
+            <PropertyRef Name="MaxScouting" />
+            <PropertyRef Name="IsHighspeed" />
+            <PropertyRef Name="FuelConsumption" />
+            <PropertyRef Name="AmmoConsumption" />
+            <PropertyRef Name="SlotAvailable" />
+            <PropertyRef Name="Slot1Mounts" />
+            <PropertyRef Name="Slot2Mounts" />
+            <PropertyRef Name="Slot3Mounts" />
+            <PropertyRef Name="Slot4Mounts" />
+            <PropertyRef Name="IsBuiltInAntiAircraft" />
+          </Key>
+          <Property Name="ShipBaseCode" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="Grade" Type="tinyint" Nullable="false" />
+          <Property Name="ShipName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShipId" Type="int" />
+          <Property Name="Level" Type="tinyint" />
+          <Property Name="RemodelingLevel" Type="tinyint" />
+          <Property Name="NextGrade" Type="tinyint" />
+          <Property Name="HitPoint" Type="tinyint" Nullable="false" />
+          <Property Name="FirePower" Type="smallint" />
+          <Property Name="MaxFirePower" Type="smallint" Nullable="false" />
+          <Property Name="TorpedoPower" Type="smallint" />
+          <Property Name="MaxTorpedoPower" Type="smallint" Nullable="false" />
+          <Property Name="AntiAircraft" Type="smallint" />
+          <Property Name="MaxAntiAircraft" Type="smallint" Nullable="false" />
+          <Property Name="Armor" Type="smallint" />
+          <Property Name="MaxArmor" Type="smallint" Nullable="false" />
+          <Property Name="Luck" Type="smallint" />
+          <Property Name="MaxLuck" Type="smallint" Nullable="false" />
+          <Property Name="AntiSubmarine" Type="smallint" />
+          <Property Name="MaxAntiSubmarine" Type="smallint" Nullable="false" />
+          <Property Name="Avoidance" Type="smallint" />
+          <Property Name="MaxAvoidance" Type="smallint" Nullable="false" />
+          <Property Name="Scouting" Type="smallint" />
+          <Property Name="MaxScouting" Type="smallint" Nullable="false" />
+          <Property Name="IsHighspeed" Type="bit" Nullable="false" />
+          <Property Name="FuelConsumption" Type="smallint" Nullable="false" />
+          <Property Name="AmmoConsumption" Type="smallint" Nullable="false" />
+          <Property Name="SlotAvailable" Type="tinyint" Nullable="false" />
+          <Property Name="Slot1Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot2Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot3Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot4Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="IsBuiltInAntiAircraft" Type="bit" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <!--生成中に見つかったエラー:
+警告 6002: テーブル/ビュー 'FleetManagerData.dbo.ViewPossessionShips' には主キーが定義されていません。主キーは推論され、定義は読み取り専用のテーブル/ビューとして作成されました。-->
+        <EntityType Name="ViewPossessionShips">
+          <Key>
+            <PropertyRef Name="ShipBaseCode" />
+            <PropertyRef Name="Grade" />
+            <PropertyRef Name="ShipName" />
+            <PropertyRef Name="ShipId" />
+            <PropertyRef Name="Level" />
+            <PropertyRef Name="HitPoint" />
+            <PropertyRef Name="FirePower" />
+            <PropertyRef Name="MaxFirePower" />
+            <PropertyRef Name="TorpedoPower" />
+            <PropertyRef Name="MaxTorpedoPower" />
+            <PropertyRef Name="AntiAircraft" />
+            <PropertyRef Name="MaxAntiAircraft" />
+            <PropertyRef Name="Armor" />
+            <PropertyRef Name="MaxArmor" />
+            <PropertyRef Name="Luck" />
+            <PropertyRef Name="MaxLuck" />
+            <PropertyRef Name="AntiSubmarine" />
+            <PropertyRef Name="MaxAntiSubmarine" />
+            <PropertyRef Name="Avoidance" />
+            <PropertyRef Name="MaxAvoidance" />
+            <PropertyRef Name="Scouting" />
+            <PropertyRef Name="MaxScouting" />
+            <PropertyRef Name="IsHighspeed" />
+            <PropertyRef Name="FuelConsumption" />
+            <PropertyRef Name="AmmoConsumption" />
+            <PropertyRef Name="SlotAvailable" />
+            <PropertyRef Name="Slot1Mounts" />
+            <PropertyRef Name="Slot2Mounts" />
+            <PropertyRef Name="Slot3Mounts" />
+            <PropertyRef Name="Slot4Mounts" />
+            <PropertyRef Name="IsBuiltInAntiAircraft" />
+          </Key>
+          <Property Name="ShipBaseCode" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="Grade" Type="tinyint" Nullable="false" />
+          <Property Name="ShipName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="ShipId" Type="int" Nullable="false" />
+          <Property Name="Level" Type="tinyint" Nullable="false" />
+          <Property Name="RemodelingLevel" Type="tinyint" />
+          <Property Name="NextGrade" Type="tinyint" />
+          <Property Name="HitPoint" Type="tinyint" Nullable="false" />
+          <Property Name="FirePower" Type="smallint" Nullable="false" />
+          <Property Name="MaxFirePower" Type="smallint" Nullable="false" />
+          <Property Name="TorpedoPower" Type="smallint" Nullable="false" />
+          <Property Name="MaxTorpedoPower" Type="smallint" Nullable="false" />
+          <Property Name="AntiAircraft" Type="smallint" Nullable="false" />
+          <Property Name="MaxAntiAircraft" Type="smallint" Nullable="false" />
+          <Property Name="Armor" Type="smallint" Nullable="false" />
+          <Property Name="MaxArmor" Type="smallint" Nullable="false" />
+          <Property Name="Luck" Type="smallint" Nullable="false" />
+          <Property Name="MaxLuck" Type="smallint" Nullable="false" />
+          <Property Name="AntiSubmarine" Type="smallint" Nullable="false" />
+          <Property Name="MaxAntiSubmarine" Type="smallint" Nullable="false" />
+          <Property Name="Avoidance" Type="smallint" Nullable="false" />
+          <Property Name="MaxAvoidance" Type="smallint" Nullable="false" />
+          <Property Name="Scouting" Type="smallint" Nullable="false" />
+          <Property Name="MaxScouting" Type="smallint" Nullable="false" />
+          <Property Name="IsHighspeed" Type="bit" Nullable="false" />
+          <Property Name="FuelConsumption" Type="smallint" Nullable="false" />
+          <Property Name="AmmoConsumption" Type="smallint" Nullable="false" />
+          <Property Name="SlotAvailable" Type="tinyint" Nullable="false" />
+          <Property Name="Slot1Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot2Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot3Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="Slot4Mounts" Type="tinyint" Nullable="false" />
+          <Property Name="IsBuiltInAntiAircraft" Type="bit" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="FleetManagerDataModelStoreContainer">
+          <EntitySet Name="MstShipBase" EntityType="Self.MstShipBase" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MstShipType" EntityType="Self.MstShipType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblShipData" EntityType="Self.TblShipData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewAllShips" EntityType="Self.ViewAllShips" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewAllShips].[ShipBaseCode] AS [ShipBaseCode], 
+    [ViewAllShips].[Grade] AS [Grade], 
+    [ViewAllShips].[ShipName] AS [ShipName], 
+    [ViewAllShips].[ShipId] AS [ShipId], 
+    [ViewAllShips].[Level] AS [Level], 
+    [ViewAllShips].[RemodelingLevel] AS [RemodelingLevel], 
+    [ViewAllShips].[NextGrade] AS [NextGrade], 
+    [ViewAllShips].[HitPoint] AS [HitPoint], 
+    [ViewAllShips].[FirePower] AS [FirePower], 
+    [ViewAllShips].[MaxFirePower] AS [MaxFirePower], 
+    [ViewAllShips].[TorpedoPower] AS [TorpedoPower], 
+    [ViewAllShips].[MaxTorpedoPower] AS [MaxTorpedoPower], 
+    [ViewAllShips].[AntiAircraft] AS [AntiAircraft], 
+    [ViewAllShips].[MaxAntiAircraft] AS [MaxAntiAircraft], 
+    [ViewAllShips].[Armor] AS [Armor], 
+    [ViewAllShips].[MaxArmor] AS [MaxArmor], 
+    [ViewAllShips].[Luck] AS [Luck], 
+    [ViewAllShips].[MaxLuck] AS [MaxLuck], 
+    [ViewAllShips].[AntiSubmarine] AS [AntiSubmarine], 
+    [ViewAllShips].[MaxAntiSubmarine] AS [MaxAntiSubmarine], 
+    [ViewAllShips].[Avoidance] AS [Avoidance], 
+    [ViewAllShips].[MaxAvoidance] AS [MaxAvoidance], 
+    [ViewAllShips].[Scouting] AS [Scouting], 
+    [ViewAllShips].[MaxScouting] AS [MaxScouting], 
+    [ViewAllShips].[IsHighspeed] AS [IsHighspeed], 
+    [ViewAllShips].[FuelConsumption] AS [FuelConsumption], 
+    [ViewAllShips].[AmmoConsumption] AS [AmmoConsumption], 
+    [ViewAllShips].[SlotAvailable] AS [SlotAvailable], 
+    [ViewAllShips].[Slot1Mounts] AS [Slot1Mounts], 
+    [ViewAllShips].[Slot2Mounts] AS [Slot2Mounts], 
+    [ViewAllShips].[Slot3Mounts] AS [Slot3Mounts], 
+    [ViewAllShips].[Slot4Mounts] AS [Slot4Mounts], 
+    [ViewAllShips].[IsBuiltInAntiAircraft] AS [IsBuiltInAntiAircraft], 
+    [ViewAllShips].[UpdatedDateTime] AS [UpdatedDateTime]
+    FROM [dbo].[ViewAllShips] AS [ViewAllShips]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewNotPossessionShips" EntityType="Self.ViewNotPossessionShips" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewNotPossessionShips].[ShipBaseCode] AS [ShipBaseCode], 
+    [ViewNotPossessionShips].[Grade] AS [Grade], 
+    [ViewNotPossessionShips].[ShipName] AS [ShipName], 
+    [ViewNotPossessionShips].[ShipId] AS [ShipId], 
+    [ViewNotPossessionShips].[Level] AS [Level], 
+    [ViewNotPossessionShips].[RemodelingLevel] AS [RemodelingLevel], 
+    [ViewNotPossessionShips].[NextGrade] AS [NextGrade], 
+    [ViewNotPossessionShips].[HitPoint] AS [HitPoint], 
+    [ViewNotPossessionShips].[FirePower] AS [FirePower], 
+    [ViewNotPossessionShips].[MaxFirePower] AS [MaxFirePower], 
+    [ViewNotPossessionShips].[TorpedoPower] AS [TorpedoPower], 
+    [ViewNotPossessionShips].[MaxTorpedoPower] AS [MaxTorpedoPower], 
+    [ViewNotPossessionShips].[AntiAircraft] AS [AntiAircraft], 
+    [ViewNotPossessionShips].[MaxAntiAircraft] AS [MaxAntiAircraft], 
+    [ViewNotPossessionShips].[Armor] AS [Armor], 
+    [ViewNotPossessionShips].[MaxArmor] AS [MaxArmor], 
+    [ViewNotPossessionShips].[Luck] AS [Luck], 
+    [ViewNotPossessionShips].[MaxLuck] AS [MaxLuck], 
+    [ViewNotPossessionShips].[AntiSubmarine] AS [AntiSubmarine], 
+    [ViewNotPossessionShips].[MaxAntiSubmarine] AS [MaxAntiSubmarine], 
+    [ViewNotPossessionShips].[Avoidance] AS [Avoidance], 
+    [ViewNotPossessionShips].[MaxAvoidance] AS [MaxAvoidance], 
+    [ViewNotPossessionShips].[Scouting] AS [Scouting], 
+    [ViewNotPossessionShips].[MaxScouting] AS [MaxScouting], 
+    [ViewNotPossessionShips].[IsHighspeed] AS [IsHighspeed], 
+    [ViewNotPossessionShips].[FuelConsumption] AS [FuelConsumption], 
+    [ViewNotPossessionShips].[AmmoConsumption] AS [AmmoConsumption], 
+    [ViewNotPossessionShips].[SlotAvailable] AS [SlotAvailable], 
+    [ViewNotPossessionShips].[Slot1Mounts] AS [Slot1Mounts], 
+    [ViewNotPossessionShips].[Slot2Mounts] AS [Slot2Mounts], 
+    [ViewNotPossessionShips].[Slot3Mounts] AS [Slot3Mounts], 
+    [ViewNotPossessionShips].[Slot4Mounts] AS [Slot4Mounts], 
+    [ViewNotPossessionShips].[IsBuiltInAntiAircraft] AS [IsBuiltInAntiAircraft], 
+    [ViewNotPossessionShips].[UpdatedDateTime] AS [UpdatedDateTime]
+    FROM [dbo].[ViewNotPossessionShips] AS [ViewNotPossessionShips]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewPossessionShips" EntityType="Self.ViewPossessionShips" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewPossessionShips].[ShipBaseCode] AS [ShipBaseCode], 
+    [ViewPossessionShips].[Grade] AS [Grade], 
+    [ViewPossessionShips].[ShipName] AS [ShipName], 
+    [ViewPossessionShips].[ShipId] AS [ShipId], 
+    [ViewPossessionShips].[Level] AS [Level], 
+    [ViewPossessionShips].[RemodelingLevel] AS [RemodelingLevel], 
+    [ViewPossessionShips].[NextGrade] AS [NextGrade], 
+    [ViewPossessionShips].[HitPoint] AS [HitPoint], 
+    [ViewPossessionShips].[FirePower] AS [FirePower], 
+    [ViewPossessionShips].[MaxFirePower] AS [MaxFirePower], 
+    [ViewPossessionShips].[TorpedoPower] AS [TorpedoPower], 
+    [ViewPossessionShips].[MaxTorpedoPower] AS [MaxTorpedoPower], 
+    [ViewPossessionShips].[AntiAircraft] AS [AntiAircraft], 
+    [ViewPossessionShips].[MaxAntiAircraft] AS [MaxAntiAircraft], 
+    [ViewPossessionShips].[Armor] AS [Armor], 
+    [ViewPossessionShips].[MaxArmor] AS [MaxArmor], 
+    [ViewPossessionShips].[Luck] AS [Luck], 
+    [ViewPossessionShips].[MaxLuck] AS [MaxLuck], 
+    [ViewPossessionShips].[AntiSubmarine] AS [AntiSubmarine], 
+    [ViewPossessionShips].[MaxAntiSubmarine] AS [MaxAntiSubmarine], 
+    [ViewPossessionShips].[Avoidance] AS [Avoidance], 
+    [ViewPossessionShips].[MaxAvoidance] AS [MaxAvoidance], 
+    [ViewPossessionShips].[Scouting] AS [Scouting], 
+    [ViewPossessionShips].[MaxScouting] AS [MaxScouting], 
+    [ViewPossessionShips].[IsHighspeed] AS [IsHighspeed], 
+    [ViewPossessionShips].[FuelConsumption] AS [FuelConsumption], 
+    [ViewPossessionShips].[AmmoConsumption] AS [AmmoConsumption], 
+    [ViewPossessionShips].[SlotAvailable] AS [SlotAvailable], 
+    [ViewPossessionShips].[Slot1Mounts] AS [Slot1Mounts], 
+    [ViewPossessionShips].[Slot2Mounts] AS [Slot2Mounts], 
+    [ViewPossessionShips].[Slot3Mounts] AS [Slot3Mounts], 
+    [ViewPossessionShips].[Slot4Mounts] AS [Slot4Mounts], 
+    [ViewPossessionShips].[IsBuiltInAntiAircraft] AS [IsBuiltInAntiAircraft], 
+    [ViewPossessionShips].[UpdatedDateTime] AS [UpdatedDateTime]
+    FROM [dbo].[ViewPossessionShips] AS [ViewPossessionShips]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FleetManagerDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FleetManagerDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MstShipBase" EntityType="FleetManagerDataModel.MstShipBase" />
+          <EntitySet Name="MstShipType" EntityType="FleetManagerDataModel.MstShipType" />
+          <EntitySet Name="TblShipData" EntityType="FleetManagerDataModel.TblShipData" />
+          <EntitySet Name="ViewAllShips" EntityType="FleetManagerDataModel.ViewAllShips" />
+          <EntitySet Name="ViewNotPossessionShips" EntityType="FleetManagerDataModel.ViewNotPossessionShips" />
+          <EntitySet Name="ViewPossessionShips" EntityType="FleetManagerDataModel.ViewPossessionShips" />
+        </EntityContainer>
+        <EntityType Name="MstShipBase">
+          <Key>
+            <PropertyRef Name="ShipBaseCode" />
+            <PropertyRef Name="Grade" />
+          </Key>
+          <Property Name="ShipBaseCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Grade" Type="Byte" Nullable="false" />
+          <Property Name="ShipName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ShipTypeId" Type="Int32" Nullable="false" />
+          <Property Name="RemodelingLevel" Type="Byte" />
+          <Property Name="NextGrade" Type="Byte" />
+          <Property Name="HitPoint" Type="Byte" Nullable="false" />
+          <Property Name="MaxFirePower" Type="Int16" Nullable="false" />
+          <Property Name="MaxTorpedoPower" Type="Int16" Nullable="false" />
+          <Property Name="MaxAntiAircraft" Type="Int16" Nullable="false" />
+          <Property Name="MaxArmor" Type="Int16" Nullable="false" />
+          <Property Name="MaxLuck" Type="Int16" Nullable="false" />
+          <Property Name="MaxAntiSubmarine" Type="Int16" Nullable="false" />
+          <Property Name="MaxAvoidance" Type="Int16" Nullable="false" />
+          <Property Name="MaxScouting" Type="Int16" Nullable="false" />
+          <Property Name="IsHighspeed" Type="Boolean" Nullable="false" />
+          <Property Name="AttackRange" Type="Byte" Nullable="false" />
+          <Property Name="FuelConsumption" Type="Int16" Nullable="false" />
+          <Property Name="AmmoConsumption" Type="Int16" Nullable="false" />
+          <Property Name="SlotAvailable" Type="Byte" Nullable="false" />
+          <Property Name="Slot1Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot2Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot3Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot4Mounts" Type="Byte" Nullable="false" />
+          <Property Name="IsBuiltInAntiAircraft" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MstShipType">
+          <Key>
+            <PropertyRef Name="ShipTypeId" />
+          </Key>
+          <Property Name="ShipTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShipTypeName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="TblShipData">
+          <Key>
+            <PropertyRef Name="ShipId" />
+          </Key>
+          <Property Name="ShipId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShipBaseCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Grade" Type="Byte" Nullable="false" />
+          <Property Name="Level" Type="Byte" Nullable="false" />
+          <Property Name="FirePower" Type="Int16" Nullable="false" />
+          <Property Name="TorpedoPower" Type="Int16" Nullable="false" />
+          <Property Name="AntiAircraft" Type="Int16" Nullable="false" />
+          <Property Name="Armor" Type="Int16" Nullable="false" />
+          <Property Name="Luck" Type="Int16" Nullable="false" />
+          <Property Name="AntiSubmarine" Type="Int16" Nullable="false" />
+          <Property Name="Avoidance" Type="Int16" Nullable="false" />
+          <Property Name="Scouting" Type="Int16" Nullable="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ViewAllShips">
+          <Key>
+            <PropertyRef Name="ShipBaseCode" />
+            <PropertyRef Name="Grade" />
+            <PropertyRef Name="ShipName" />
+            <PropertyRef Name="HitPoint" />
+            <PropertyRef Name="MaxFirePower" />
+            <PropertyRef Name="MaxTorpedoPower" />
+            <PropertyRef Name="MaxAntiAircraft" />
+            <PropertyRef Name="MaxArmor" />
+            <PropertyRef Name="MaxLuck" />
+            <PropertyRef Name="MaxAntiSubmarine" />
+            <PropertyRef Name="MaxAvoidance" />
+            <PropertyRef Name="MaxScouting" />
+            <PropertyRef Name="IsHighspeed" />
+            <PropertyRef Name="FuelConsumption" />
+            <PropertyRef Name="AmmoConsumption" />
+            <PropertyRef Name="SlotAvailable" />
+            <PropertyRef Name="Slot1Mounts" />
+            <PropertyRef Name="Slot2Mounts" />
+            <PropertyRef Name="Slot3Mounts" />
+            <PropertyRef Name="Slot4Mounts" />
+            <PropertyRef Name="IsBuiltInAntiAircraft" />
+          </Key>
+          <Property Name="ShipBaseCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Grade" Type="Byte" Nullable="false" />
+          <Property Name="ShipName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ShipId" Type="Int32" />
+          <Property Name="Level" Type="Byte" />
+          <Property Name="RemodelingLevel" Type="Byte" />
+          <Property Name="NextGrade" Type="Byte" />
+          <Property Name="HitPoint" Type="Byte" Nullable="false" />
+          <Property Name="FirePower" Type="Int16" />
+          <Property Name="MaxFirePower" Type="Int16" Nullable="false" />
+          <Property Name="TorpedoPower" Type="Int16" />
+          <Property Name="MaxTorpedoPower" Type="Int16" Nullable="false" />
+          <Property Name="AntiAircraft" Type="Int16" />
+          <Property Name="MaxAntiAircraft" Type="Int16" Nullable="false" />
+          <Property Name="Armor" Type="Int16" />
+          <Property Name="MaxArmor" Type="Int16" Nullable="false" />
+          <Property Name="Luck" Type="Int16" />
+          <Property Name="MaxLuck" Type="Int16" Nullable="false" />
+          <Property Name="AntiSubmarine" Type="Int16" />
+          <Property Name="MaxAntiSubmarine" Type="Int16" Nullable="false" />
+          <Property Name="Avoidance" Type="Int16" />
+          <Property Name="MaxAvoidance" Type="Int16" Nullable="false" />
+          <Property Name="Scouting" Type="Int16" />
+          <Property Name="MaxScouting" Type="Int16" Nullable="false" />
+          <Property Name="IsHighspeed" Type="Boolean" Nullable="false" />
+          <Property Name="FuelConsumption" Type="Int16" Nullable="false" />
+          <Property Name="AmmoConsumption" Type="Int16" Nullable="false" />
+          <Property Name="SlotAvailable" Type="Byte" Nullable="false" />
+          <Property Name="Slot1Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot2Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot3Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot4Mounts" Type="Byte" Nullable="false" />
+          <Property Name="IsBuiltInAntiAircraft" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ViewNotPossessionShips">
+          <Key>
+            <PropertyRef Name="ShipBaseCode" />
+            <PropertyRef Name="Grade" />
+            <PropertyRef Name="ShipName" />
+            <PropertyRef Name="HitPoint" />
+            <PropertyRef Name="MaxFirePower" />
+            <PropertyRef Name="MaxTorpedoPower" />
+            <PropertyRef Name="MaxAntiAircraft" />
+            <PropertyRef Name="MaxArmor" />
+            <PropertyRef Name="MaxLuck" />
+            <PropertyRef Name="MaxAntiSubmarine" />
+            <PropertyRef Name="MaxAvoidance" />
+            <PropertyRef Name="MaxScouting" />
+            <PropertyRef Name="IsHighspeed" />
+            <PropertyRef Name="FuelConsumption" />
+            <PropertyRef Name="AmmoConsumption" />
+            <PropertyRef Name="SlotAvailable" />
+            <PropertyRef Name="Slot1Mounts" />
+            <PropertyRef Name="Slot2Mounts" />
+            <PropertyRef Name="Slot3Mounts" />
+            <PropertyRef Name="Slot4Mounts" />
+            <PropertyRef Name="IsBuiltInAntiAircraft" />
+          </Key>
+          <Property Name="ShipBaseCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Grade" Type="Byte" Nullable="false" />
+          <Property Name="ShipName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ShipId" Type="Int32" />
+          <Property Name="Level" Type="Byte" />
+          <Property Name="RemodelingLevel" Type="Byte" />
+          <Property Name="NextGrade" Type="Byte" />
+          <Property Name="HitPoint" Type="Byte" Nullable="false" />
+          <Property Name="FirePower" Type="Int16" />
+          <Property Name="MaxFirePower" Type="Int16" Nullable="false" />
+          <Property Name="TorpedoPower" Type="Int16" />
+          <Property Name="MaxTorpedoPower" Type="Int16" Nullable="false" />
+          <Property Name="AntiAircraft" Type="Int16" />
+          <Property Name="MaxAntiAircraft" Type="Int16" Nullable="false" />
+          <Property Name="Armor" Type="Int16" />
+          <Property Name="MaxArmor" Type="Int16" Nullable="false" />
+          <Property Name="Luck" Type="Int16" />
+          <Property Name="MaxLuck" Type="Int16" Nullable="false" />
+          <Property Name="AntiSubmarine" Type="Int16" />
+          <Property Name="MaxAntiSubmarine" Type="Int16" Nullable="false" />
+          <Property Name="Avoidance" Type="Int16" />
+          <Property Name="MaxAvoidance" Type="Int16" Nullable="false" />
+          <Property Name="Scouting" Type="Int16" />
+          <Property Name="MaxScouting" Type="Int16" Nullable="false" />
+          <Property Name="IsHighspeed" Type="Boolean" Nullable="false" />
+          <Property Name="FuelConsumption" Type="Int16" Nullable="false" />
+          <Property Name="AmmoConsumption" Type="Int16" Nullable="false" />
+          <Property Name="SlotAvailable" Type="Byte" Nullable="false" />
+          <Property Name="Slot1Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot2Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot3Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot4Mounts" Type="Byte" Nullable="false" />
+          <Property Name="IsBuiltInAntiAircraft" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="ViewPossessionShips">
+          <Key>
+            <PropertyRef Name="ShipBaseCode" />
+            <PropertyRef Name="Grade" />
+            <PropertyRef Name="ShipName" />
+            <PropertyRef Name="ShipId" />
+            <PropertyRef Name="Level" />
+            <PropertyRef Name="HitPoint" />
+            <PropertyRef Name="FirePower" />
+            <PropertyRef Name="MaxFirePower" />
+            <PropertyRef Name="TorpedoPower" />
+            <PropertyRef Name="MaxTorpedoPower" />
+            <PropertyRef Name="AntiAircraft" />
+            <PropertyRef Name="MaxAntiAircraft" />
+            <PropertyRef Name="Armor" />
+            <PropertyRef Name="MaxArmor" />
+            <PropertyRef Name="Luck" />
+            <PropertyRef Name="MaxLuck" />
+            <PropertyRef Name="AntiSubmarine" />
+            <PropertyRef Name="MaxAntiSubmarine" />
+            <PropertyRef Name="Avoidance" />
+            <PropertyRef Name="MaxAvoidance" />
+            <PropertyRef Name="Scouting" />
+            <PropertyRef Name="MaxScouting" />
+            <PropertyRef Name="IsHighspeed" />
+            <PropertyRef Name="FuelConsumption" />
+            <PropertyRef Name="AmmoConsumption" />
+            <PropertyRef Name="SlotAvailable" />
+            <PropertyRef Name="Slot1Mounts" />
+            <PropertyRef Name="Slot2Mounts" />
+            <PropertyRef Name="Slot3Mounts" />
+            <PropertyRef Name="Slot4Mounts" />
+            <PropertyRef Name="IsBuiltInAntiAircraft" />
+          </Key>
+          <Property Name="ShipBaseCode" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Name="Grade" Type="Byte" Nullable="false" />
+          <Property Name="ShipName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ShipId" Type="Int32" Nullable="false" />
+          <Property Name="Level" Type="Byte" Nullable="false" />
+          <Property Name="RemodelingLevel" Type="Byte" />
+          <Property Name="NextGrade" Type="Byte" />
+          <Property Name="HitPoint" Type="Byte" Nullable="false" />
+          <Property Name="FirePower" Type="Int16" Nullable="false" />
+          <Property Name="MaxFirePower" Type="Int16" Nullable="false" />
+          <Property Name="TorpedoPower" Type="Int16" Nullable="false" />
+          <Property Name="MaxTorpedoPower" Type="Int16" Nullable="false" />
+          <Property Name="AntiAircraft" Type="Int16" Nullable="false" />
+          <Property Name="MaxAntiAircraft" Type="Int16" Nullable="false" />
+          <Property Name="Armor" Type="Int16" Nullable="false" />
+          <Property Name="MaxArmor" Type="Int16" Nullable="false" />
+          <Property Name="Luck" Type="Int16" Nullable="false" />
+          <Property Name="MaxLuck" Type="Int16" Nullable="false" />
+          <Property Name="AntiSubmarine" Type="Int16" Nullable="false" />
+          <Property Name="MaxAntiSubmarine" Type="Int16" Nullable="false" />
+          <Property Name="Avoidance" Type="Int16" Nullable="false" />
+          <Property Name="MaxAvoidance" Type="Int16" Nullable="false" />
+          <Property Name="Scouting" Type="Int16" Nullable="false" />
+          <Property Name="MaxScouting" Type="Int16" Nullable="false" />
+          <Property Name="IsHighspeed" Type="Boolean" Nullable="false" />
+          <Property Name="FuelConsumption" Type="Int16" Nullable="false" />
+          <Property Name="AmmoConsumption" Type="Int16" Nullable="false" />
+          <Property Name="SlotAvailable" Type="Byte" Nullable="false" />
+          <Property Name="Slot1Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot2Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot3Mounts" Type="Byte" Nullable="false" />
+          <Property Name="Slot4Mounts" Type="Byte" Nullable="false" />
+          <Property Name="IsBuiltInAntiAircraft" Type="Boolean" Nullable="false" />
+          <Property Name="UpdatedDateTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FleetManagerDataModelStoreContainer" CdmEntityContainer="FleetManagerDataEntities">
+          <EntitySetMapping Name="MstShipBase">
+            <EntityTypeMapping TypeName="FleetManagerDataModel.MstShipBase">
+              <MappingFragment StoreEntitySet="MstShipBase">
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="IsBuiltInAntiAircraft" ColumnName="IsBuiltInAntiAircraft" />
+                <ScalarProperty Name="Slot4Mounts" ColumnName="Slot4Mounts" />
+                <ScalarProperty Name="Slot3Mounts" ColumnName="Slot3Mounts" />
+                <ScalarProperty Name="Slot2Mounts" ColumnName="Slot2Mounts" />
+                <ScalarProperty Name="Slot1Mounts" ColumnName="Slot1Mounts" />
+                <ScalarProperty Name="SlotAvailable" ColumnName="SlotAvailable" />
+                <ScalarProperty Name="AmmoConsumption" ColumnName="AmmoConsumption" />
+                <ScalarProperty Name="FuelConsumption" ColumnName="FuelConsumption" />
+                <ScalarProperty Name="AttackRange" ColumnName="AttackRange" />
+                <ScalarProperty Name="IsHighspeed" ColumnName="IsHighspeed" />
+                <ScalarProperty Name="MaxScouting" ColumnName="MaxScouting" />
+                <ScalarProperty Name="MaxAvoidance" ColumnName="MaxAvoidance" />
+                <ScalarProperty Name="MaxAntiSubmarine" ColumnName="MaxAntiSubmarine" />
+                <ScalarProperty Name="MaxLuck" ColumnName="MaxLuck" />
+                <ScalarProperty Name="MaxArmor" ColumnName="MaxArmor" />
+                <ScalarProperty Name="MaxAntiAircraft" ColumnName="MaxAntiAircraft" />
+                <ScalarProperty Name="MaxTorpedoPower" ColumnName="MaxTorpedoPower" />
+                <ScalarProperty Name="MaxFirePower" ColumnName="MaxFirePower" />
+                <ScalarProperty Name="HitPoint" ColumnName="HitPoint" />
+                <ScalarProperty Name="NextGrade" ColumnName="NextGrade" />
+                <ScalarProperty Name="RemodelingLevel" ColumnName="RemodelingLevel" />
+                <ScalarProperty Name="ShipTypeId" ColumnName="ShipTypeId" />
+                <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="ShipBaseCode" ColumnName="ShipBaseCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MstShipType">
+            <EntityTypeMapping TypeName="FleetManagerDataModel.MstShipType">
+              <MappingFragment StoreEntitySet="MstShipType">
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="ShipTypeName" ColumnName="ShipTypeName" />
+                <ScalarProperty Name="ShipTypeId" ColumnName="ShipTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblShipData">
+            <EntityTypeMapping TypeName="FleetManagerDataModel.TblShipData">
+              <MappingFragment StoreEntitySet="TblShipData">
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="Scouting" ColumnName="Scouting" />
+                <ScalarProperty Name="Avoidance" ColumnName="Avoidance" />
+                <ScalarProperty Name="AntiSubmarine" ColumnName="AntiSubmarine" />
+                <ScalarProperty Name="Luck" ColumnName="Luck" />
+                <ScalarProperty Name="Armor" ColumnName="Armor" />
+                <ScalarProperty Name="AntiAircraft" ColumnName="AntiAircraft" />
+                <ScalarProperty Name="TorpedoPower" ColumnName="TorpedoPower" />
+                <ScalarProperty Name="FirePower" ColumnName="FirePower" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="ShipBaseCode" ColumnName="ShipBaseCode" />
+                <ScalarProperty Name="ShipId" ColumnName="ShipId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewAllShips">
+            <EntityTypeMapping TypeName="FleetManagerDataModel.ViewAllShips">
+              <MappingFragment StoreEntitySet="ViewAllShips">
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="IsBuiltInAntiAircraft" ColumnName="IsBuiltInAntiAircraft" />
+                <ScalarProperty Name="Slot4Mounts" ColumnName="Slot4Mounts" />
+                <ScalarProperty Name="Slot3Mounts" ColumnName="Slot3Mounts" />
+                <ScalarProperty Name="Slot2Mounts" ColumnName="Slot2Mounts" />
+                <ScalarProperty Name="Slot1Mounts" ColumnName="Slot1Mounts" />
+                <ScalarProperty Name="SlotAvailable" ColumnName="SlotAvailable" />
+                <ScalarProperty Name="AmmoConsumption" ColumnName="AmmoConsumption" />
+                <ScalarProperty Name="FuelConsumption" ColumnName="FuelConsumption" />
+                <ScalarProperty Name="IsHighspeed" ColumnName="IsHighspeed" />
+                <ScalarProperty Name="MaxScouting" ColumnName="MaxScouting" />
+                <ScalarProperty Name="Scouting" ColumnName="Scouting" />
+                <ScalarProperty Name="MaxAvoidance" ColumnName="MaxAvoidance" />
+                <ScalarProperty Name="Avoidance" ColumnName="Avoidance" />
+                <ScalarProperty Name="MaxAntiSubmarine" ColumnName="MaxAntiSubmarine" />
+                <ScalarProperty Name="AntiSubmarine" ColumnName="AntiSubmarine" />
+                <ScalarProperty Name="MaxLuck" ColumnName="MaxLuck" />
+                <ScalarProperty Name="Luck" ColumnName="Luck" />
+                <ScalarProperty Name="MaxArmor" ColumnName="MaxArmor" />
+                <ScalarProperty Name="Armor" ColumnName="Armor" />
+                <ScalarProperty Name="MaxAntiAircraft" ColumnName="MaxAntiAircraft" />
+                <ScalarProperty Name="AntiAircraft" ColumnName="AntiAircraft" />
+                <ScalarProperty Name="MaxTorpedoPower" ColumnName="MaxTorpedoPower" />
+                <ScalarProperty Name="TorpedoPower" ColumnName="TorpedoPower" />
+                <ScalarProperty Name="MaxFirePower" ColumnName="MaxFirePower" />
+                <ScalarProperty Name="FirePower" ColumnName="FirePower" />
+                <ScalarProperty Name="HitPoint" ColumnName="HitPoint" />
+                <ScalarProperty Name="NextGrade" ColumnName="NextGrade" />
+                <ScalarProperty Name="RemodelingLevel" ColumnName="RemodelingLevel" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ShipId" ColumnName="ShipId" />
+                <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="ShipBaseCode" ColumnName="ShipBaseCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewNotPossessionShips">
+            <EntityTypeMapping TypeName="FleetManagerDataModel.ViewNotPossessionShips">
+              <MappingFragment StoreEntitySet="ViewNotPossessionShips">
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="IsBuiltInAntiAircraft" ColumnName="IsBuiltInAntiAircraft" />
+                <ScalarProperty Name="Slot4Mounts" ColumnName="Slot4Mounts" />
+                <ScalarProperty Name="Slot3Mounts" ColumnName="Slot3Mounts" />
+                <ScalarProperty Name="Slot2Mounts" ColumnName="Slot2Mounts" />
+                <ScalarProperty Name="Slot1Mounts" ColumnName="Slot1Mounts" />
+                <ScalarProperty Name="SlotAvailable" ColumnName="SlotAvailable" />
+                <ScalarProperty Name="AmmoConsumption" ColumnName="AmmoConsumption" />
+                <ScalarProperty Name="FuelConsumption" ColumnName="FuelConsumption" />
+                <ScalarProperty Name="IsHighspeed" ColumnName="IsHighspeed" />
+                <ScalarProperty Name="MaxScouting" ColumnName="MaxScouting" />
+                <ScalarProperty Name="Scouting" ColumnName="Scouting" />
+                <ScalarProperty Name="MaxAvoidance" ColumnName="MaxAvoidance" />
+                <ScalarProperty Name="Avoidance" ColumnName="Avoidance" />
+                <ScalarProperty Name="MaxAntiSubmarine" ColumnName="MaxAntiSubmarine" />
+                <ScalarProperty Name="AntiSubmarine" ColumnName="AntiSubmarine" />
+                <ScalarProperty Name="MaxLuck" ColumnName="MaxLuck" />
+                <ScalarProperty Name="Luck" ColumnName="Luck" />
+                <ScalarProperty Name="MaxArmor" ColumnName="MaxArmor" />
+                <ScalarProperty Name="Armor" ColumnName="Armor" />
+                <ScalarProperty Name="MaxAntiAircraft" ColumnName="MaxAntiAircraft" />
+                <ScalarProperty Name="AntiAircraft" ColumnName="AntiAircraft" />
+                <ScalarProperty Name="MaxTorpedoPower" ColumnName="MaxTorpedoPower" />
+                <ScalarProperty Name="TorpedoPower" ColumnName="TorpedoPower" />
+                <ScalarProperty Name="MaxFirePower" ColumnName="MaxFirePower" />
+                <ScalarProperty Name="FirePower" ColumnName="FirePower" />
+                <ScalarProperty Name="HitPoint" ColumnName="HitPoint" />
+                <ScalarProperty Name="NextGrade" ColumnName="NextGrade" />
+                <ScalarProperty Name="RemodelingLevel" ColumnName="RemodelingLevel" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ShipId" ColumnName="ShipId" />
+                <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="ShipBaseCode" ColumnName="ShipBaseCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewPossessionShips">
+            <EntityTypeMapping TypeName="FleetManagerDataModel.ViewPossessionShips">
+              <MappingFragment StoreEntitySet="ViewPossessionShips">
+                <ScalarProperty Name="UpdatedDateTime" ColumnName="UpdatedDateTime" />
+                <ScalarProperty Name="IsBuiltInAntiAircraft" ColumnName="IsBuiltInAntiAircraft" />
+                <ScalarProperty Name="Slot4Mounts" ColumnName="Slot4Mounts" />
+                <ScalarProperty Name="Slot3Mounts" ColumnName="Slot3Mounts" />
+                <ScalarProperty Name="Slot2Mounts" ColumnName="Slot2Mounts" />
+                <ScalarProperty Name="Slot1Mounts" ColumnName="Slot1Mounts" />
+                <ScalarProperty Name="SlotAvailable" ColumnName="SlotAvailable" />
+                <ScalarProperty Name="AmmoConsumption" ColumnName="AmmoConsumption" />
+                <ScalarProperty Name="FuelConsumption" ColumnName="FuelConsumption" />
+                <ScalarProperty Name="IsHighspeed" ColumnName="IsHighspeed" />
+                <ScalarProperty Name="MaxScouting" ColumnName="MaxScouting" />
+                <ScalarProperty Name="Scouting" ColumnName="Scouting" />
+                <ScalarProperty Name="MaxAvoidance" ColumnName="MaxAvoidance" />
+                <ScalarProperty Name="Avoidance" ColumnName="Avoidance" />
+                <ScalarProperty Name="MaxAntiSubmarine" ColumnName="MaxAntiSubmarine" />
+                <ScalarProperty Name="AntiSubmarine" ColumnName="AntiSubmarine" />
+                <ScalarProperty Name="MaxLuck" ColumnName="MaxLuck" />
+                <ScalarProperty Name="Luck" ColumnName="Luck" />
+                <ScalarProperty Name="MaxArmor" ColumnName="MaxArmor" />
+                <ScalarProperty Name="Armor" ColumnName="Armor" />
+                <ScalarProperty Name="MaxAntiAircraft" ColumnName="MaxAntiAircraft" />
+                <ScalarProperty Name="AntiAircraft" ColumnName="AntiAircraft" />
+                <ScalarProperty Name="MaxTorpedoPower" ColumnName="MaxTorpedoPower" />
+                <ScalarProperty Name="TorpedoPower" ColumnName="TorpedoPower" />
+                <ScalarProperty Name="MaxFirePower" ColumnName="MaxFirePower" />
+                <ScalarProperty Name="FirePower" ColumnName="FirePower" />
+                <ScalarProperty Name="HitPoint" ColumnName="HitPoint" />
+                <ScalarProperty Name="NextGrade" ColumnName="NextGrade" />
+                <ScalarProperty Name="RemodelingLevel" ColumnName="RemodelingLevel" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ShipId" ColumnName="ShipId" />
+                <ScalarProperty Name="ShipName" ColumnName="ShipName" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="ShipBaseCode" ColumnName="ShipBaseCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="なし" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
